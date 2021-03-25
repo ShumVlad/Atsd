@@ -68,6 +68,14 @@ namespace Lab1_SortedLinkedList
             }
             return false;
         }
+        public int Length() { { return length; } }
+        public void Clear()
+        {
+            first = null;
+            last = null;
+            length = 0;
+        }
+        public bool IsEmpty() { return length == 0; }
      }
      class Program
     {
