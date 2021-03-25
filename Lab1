@@ -88,12 +88,42 @@ namespace Lab1_SortedLinkedList
             if (a == 0) { return true; }
             else { return false; }
         }
+        public void Print()
+        {
+            Node<T> sho = first;
+            while (sho != null)
+            {
+                Console.WriteLine(sho.Data);
+                sho = sho.Next;
+            }
+        }
+    }
      }
      class Program
     {
         static void Main(string[] args)
         {
-            
+            var list = new SortedLinkedList<int>();
+
+            Console.WriteLine("Enter number of items you want to add: ");
+            int numOfAddItems = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < numOfAddItems; i++)
+            {
+                list.AddItem(Convert.ToInt32(Console.ReadLine()));
+            }
+            list.Vyvod();
+            Console.WriteLine("Enter number of items you want to delete: ");
+            int numOfDeleteItems = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < numOfDeleteItems; i++)
+            {
+                list.Delete(Convert.ToInt32(Console.ReadLine()));
+            }
+            Console.WriteLine("Enter number you want to find: ");
+            Console.WriteLine(list.FindItem(Convert.ToInt32(Console.ReadLine())));
+            list.Print();
+            Console.WriteLine(list.Length());
+            list.Clear();
+            Console.WriteLine(list.IsEmpty());
         }
     }
 }
