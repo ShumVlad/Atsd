@@ -76,6 +76,18 @@ namespace Lab1_SortedLinkedList
             length = 0;
         }
         public bool IsEmpty() { return length == 0; }
+        public bool FindItem(T data)
+        {
+            Node<T> cur = first.Next;
+            int a = 1;
+            Node<T> node = new Node<T>(data);
+            while (cur != null && Comparer.Default.Compare(cur.Next.Data, node.Data) != 0)
+            {
+                a = Comparer.Default.Compare(cur.Next.Data, node.Data);
+            }
+            if (a == 0) { return true; }
+            else { return false; }
+        }
      }
      class Program
     {
