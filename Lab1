@@ -17,6 +17,28 @@ namespace Lab1_SortedLinkedList
         Node<T> first = null;
         Node<T> last = null;
         int length;
+        public int Compare(T x, T y) => Comparer.Default.Compare(x, y);
+        public void AddItem(T data)
+        {
+            Node<T> per = first;
+            Node<T> node = new Node<T>(data);
+            if (first == null || Comparer.Default.Compare(per.Data, node.Data) > 0)
+            {
+                node.Next = per;
+                first = node;
+            }
+            else
+            {
+                Node<T> cur = first;
+                while (cur.Next != null && Comparer.Default.Compare(cur.Next.Data, node.Data) < 0)
+                {
+                    cur = cur.Next;
+                }
+                node.Next = cur.Next;
+                cur.Next = node;
+            }
+            length++;
+        }
      }
      class Program
     {
