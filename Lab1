@@ -1,0 +1,28 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+namespace Lab1_SortedLinkedList
+{
+    public class Node<T>
+    {
+        public Node(T data)
+        {
+            Data = data;
+        }
+        public T Data { get; set; }
+        public Node<T> Next { get; set; }
+    }
+    public class SortedLinkedList<T> : IComparer<T>
+    {
+        Node<T> first = null;
+        Node<T> last = null;
+        int length;
+     }
+     class Program
+    {
+        static void Main(string[] args)
+        {
+            
+        }
+    }
+}
