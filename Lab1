@@ -39,6 +39,35 @@ namespace Lab1_SortedLinkedList
             }
             length++;
         }
+        public bool Delete(T data)
+        {
+            Node<T> a = first;
+            Node<T> ap = null;
+            while (a != null)
+            {
+                if (a.Data.Equals(data))
+                {
+                    if (ap != null)
+                    {
+                        ap.Next = a.Next;
+                        if (a.Next == null)
+                            last = ap;
+                    }
+                    else
+                    {
+                        first = first.Next;
+
+                        if (first == null)
+                            last = null;
+                    }
+                    length--;
+                    return true;
+                }
+                ap = a;
+                a = a.Next;
+            }
+            return false;
+        }
      }
      class Program
     {
