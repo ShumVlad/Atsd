@@ -39,34 +39,31 @@ namespace Lab1_SortedLinkedList
             }
             length++;
         }
-        public bool Delete(T data)
+        public void Delete(T data)
         {
-            Node<T> a = first;
-            Node<T> ap = null;
-            while (a != null)
+            Node<T> pre = null;
+            Node<T> cur = first;
+            while(cur!=null)
             {
-                if (a.Data.Equals(data))
+                if (cur.Data.Equals(data))
                 {
-                    if (ap != null)
+                    if (pre != null)
                     {
-                        ap.Next = a.Next;
-                        if (a.Next == null)
-                            last = ap;
+                        pre.Next = cur.Next;
+                        if (cur.Next == null)
+                            last = pre;
                     }
                     else
                     {
                         first = first.Next;
-
                         if (first == null)
                             last = null;
                     }
                     length--;
-                    return true;
                 }
-                ap = a;
-                a = a.Next;
+                pre = cur;
+                cur = cur.Next;
             }
-            return false;
         }
         public int Length() { { return length; } }
         public void Clear()
@@ -78,17 +75,16 @@ namespace Lab1_SortedLinkedList
         public bool IsEmpty() { return length == 0; }
         public bool FindItem(T data)
         {
-            Node<T> cur = first.Next;
-            int a = 1;
-            Node<T> node = new Node<T>(data);
-            while (cur != null && Comparer.Default.Compare(cur.Next.Data, node.Data) != 0)
+                Node<T> cur = first;
+            while (cur != null)
             {
-                a = Comparer.Default.Compare(cur.Next.Data, node.Data);
+                if (cur.Data.Equals(data))
+                    return true;
+                cur = cur.Next;
             }
-            if (a == 0) { return true; }
-            else { return false; }
+            return false;
         }
-        public void Print()
+            public void Vyvod()
         {
             Node<T> sho = first;
             while (sho != null)
@@ -98,8 +94,7 @@ namespace Lab1_SortedLinkedList
             }
         }
     }
-     }
-     class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -120,7 +115,7 @@ namespace Lab1_SortedLinkedList
             }
             Console.WriteLine("Enter number you want to find: ");
             Console.WriteLine(list.FindItem(Convert.ToInt32(Console.ReadLine())));
-            list.Print();
+            list.Vyvod();
             Console.WriteLine(list.Length());
             list.Clear();
             Console.WriteLine(list.IsEmpty());
